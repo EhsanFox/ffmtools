@@ -14,7 +14,9 @@ export class ffmpegClient {
     args: ffmpegArgBuilder,
     cb?: (e: Error | unknown | undefined, result?: boolean) => void
   ): ThroughStream | void {
-    const ffmpegProcess = this.ffmpeg(args.build(fileDst));
+    const ffmpegProcess = this.ffmpeg(args.build(fileDst), {
+      env: process.env,
+    });
     const stream = through();
 
     ffmpegProcess.on("error", stream.emit.bind(stream, "error"));

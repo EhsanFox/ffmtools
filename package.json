@@ -1,6 +1,6 @@
 {
   "name": "fftools",
-  "version": "1.0.0",
+  "version": "1.0.0-public",
   "description": "Some ffmpeg tips and tricks that might come in handy in one package",
   "main": "dist/src/index.js",
   "typings": "dist/index.d.ts",
@@ -40,6 +40,7 @@
   "devDependencies": {
     "@types/jest": "^27.4.0",
     "@types/node": "^12.20.55",
+    "@types/through": "^0.0.30",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.13.0",
@@ -59,5 +60,6 @@
     "id3"
   ],
   "dependencies": {
+    "through": "^2.3.8"
   }
 }

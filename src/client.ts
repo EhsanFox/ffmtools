@@ -18,7 +18,7 @@ export class ffmpegClient {
     const stream = through();
 
     ffmpegProcess.on("error", stream.emit.bind(stream, "error"));
-    ffmpegProcess.stdout.on("data", stream.emit.bind(stream, "data"));
+    ffmpegProcess.stdout?.on("data", stream.emit.bind(stream, "data"));
     ffmpegProcess.on("close", (code) => {
       if (code === 0) {
         stream.emit("end");

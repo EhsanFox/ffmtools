@@ -1,6 +1,6 @@
-# fftools
+# ffmtools
 
-> fftools is a package with multiple ffmpeg commands and child spawners, to help you do some magic and tricks with ffmpeg in your code!
+> ffmtools is a package with multiple ffmpeg commands and child spawners, to help you do some magic and tricks with ffmpeg in your code!
 
 ## Table of Contents
 - [Installation](#installation)
@@ -12,13 +12,13 @@
 - Using NPM
 
 ```
-npm install fftools
+npm install ffmtools
 ```
 
 - Using yarn
 
 ```
-yarn add fftools
+yarn add ffmtools
 ```
 
 ### Features
@@ -30,4 +30,4 @@ yarn add fftools
 Documents are down currently.
 
 ### Examples
-Examples usages are available in [test directory](https://github.com/EhsanFox/fftools/tree/main/test)
+Examples usages are available in [test directory](https://github.com/EhsanFox/ffmtools/tree/main/test)

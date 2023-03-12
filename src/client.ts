@@ -21,6 +21,8 @@ export class ffmpegClient {
 
     ffmpegProcess.on("error", stream.emit.bind(stream, "error"));
     ffmpegProcess.stdout?.on("data", stream.emit.bind(stream, "data"));
+    ffmpegProcess.stderr?.on("data", stream.emit.bind(stream, "data"));
+    ffmpegProcess.on("message", stream.emit.bind(stream, "message"));
     ffmpegProcess.on("close", (code) => {
       if (code === 0) {
         stream.emit("end");

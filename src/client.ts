@@ -13,7 +13,7 @@ export class ffmpegClient {
     fileDst: string,
     args: ffmpegArgBuilder,
     cb?: (e: Error | unknown | undefined, result?: boolean) => void
-  ): ThroughStream | void {
+  ): ThroughStream {
     const ffmpegProcess = this.ffmpeg(args.build(fileDst), {
       env: process.env,
     });

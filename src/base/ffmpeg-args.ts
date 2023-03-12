@@ -1,7 +1,7 @@
 export default class ffmpegArgs {
-  private readonly inputs: string[] = [];
-  private readonly args: string[] = [];
-  private readonly maps: string[] = [];
+  readonly inputs: string[] = [];
+  readonly args: string[] = [];
+  readonly maps: string[] = [];
 
   constructor(srcPath: string, mapPos = 0) {
     this.addInput(srcPath, mapPos);

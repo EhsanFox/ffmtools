@@ -1,3 +1,7 @@
+export interface MP3Metadata extends Record<string, unknown> {
+  attachments?: string | string[];
+}
+
 export interface MP3TagsIDv2_2 {
   artist: string;
   genre: string;

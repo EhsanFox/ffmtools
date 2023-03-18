@@ -14,10 +14,11 @@ export default (
   const { attachments: _, ...allData } = data;
 
   if (_)
-    if (Array.isArray(_)) _.map((x) => arg.addInput(x, arg.inputs.length / 2));
-    else arg.addInput(_, arg.inputs.length / 2);
+    if (Array.isArray(_))
+      _.map((x) => arg.addInput(x, arg.inputs.length / 2, `-codec:v`, "copy"));
+    else arg.addInput(_, arg.inputs.length / 2, `-codec:v`, "copy");
 
-  arg.setCodec("copy", "-c").addMetadata(allData);
+  arg.addMetadata(allData);
 
   return ffmpeg.execute(dest, arg, cb);
 };

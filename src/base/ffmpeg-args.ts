@@ -4,15 +4,20 @@ export default class ffmpegArgs {
   readonly maps: string[] = [];
   readonly metadatas: string[] = [];
   readonly codec: string[] = [];
-  constructor(srcPath: string, mapPos = 0) {
-    this.addInput(srcPath, mapPos);
+  constructor(
+    srcPath: string,
+    mapPos = 0,
+    codecTag = "-codec:a",
+    codec = "mp3"
+  ) {
+    this.addInput(srcPath, mapPos, codecTag, codec);
     this.args.push(`-y`);
   }
 
-  addInput(src: string, mapPos: number) {
+  addInput(src: string, mapPos: number, codecTag: string, codec: string) {
     this.inputs.push(`-i`, src);
     this.maps.push(`-map`, `${mapPos}:0`);
-
+    this.setCodec(codec, `${codecTag}:${mapPos}`);
     return this;
   }
 
@@ -24,7 +29,7 @@ export default class ffmpegArgs {
     return this;
   }
 
-  setCodec(codec: string | "mp3", codecTag = "-c") {
+  private setCodec(codec: string | "mp3", codecTag = "-codec:a") {
     this.codec.push(codecTag, codec);
 
     return this;

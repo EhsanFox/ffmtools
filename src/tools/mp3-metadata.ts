@@ -17,7 +17,7 @@ export default (
     if (Array.isArray(_)) _.map((x) => arg.addInput(x, arg.inputs.length / 2));
     else arg.addInput(_, arg.inputs.length / 2);
 
-  arg.setCodec("mp3").addMetadata(allData);
+  arg.setCodec("copy", "-c").addMetadata(allData);
 
   return ffmpeg.execute(dest, arg, cb);
 };

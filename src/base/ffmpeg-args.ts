@@ -2,9 +2,11 @@ export default class ffmpegArgs {
   readonly inputs: string[] = [];
   readonly args: string[] = [];
   readonly maps: string[] = [];
-
+  readonly metadatas: string[] = [];
+  readonly codec: string[] = [`-codec`];
   constructor(srcPath: string, mapPos = 0) {
     this.addInput(srcPath, mapPos);
+    this.args.push(`-y`);
   }
 
   addInput(src: string, mapPos: number) {
@@ -16,21 +18,23 @@ export default class ffmpegArgs {
 
   addMetadata(data: Record<string, unknown>) {
     Object.keys(data).forEach((k, i) =>
-      this.args.push(`-metadata`, `${k}=${data[i]}`)
+      this.metadatas.push(`-metadata`, `${k}=${data[i]}`)
     );
 
     return this;
   }
 
   setCodec(codec: string | "mp3") {
-    this.args.push(`-codec`, codec);
+    this.codec.push(codec);
 
     return this;
   }
 
   build(dstPath: string) {
-    const result = this.args.concat(this.inputs, this.maps);
-    result.push(`-y`, dstPath);
+    const argsResult = this.args.concat(this.inputs, this.maps, this.codec);
+    const result = argsResult.concat(this.metadatas);
+
+    result.push(dstPath);
 
     return result;
   }

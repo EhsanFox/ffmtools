@@ -14,11 +14,13 @@ export class ffmpegClient {
     args: ffmpegArgBuilder,
     cb?: (e: Error | unknown | undefined, result?: boolean) => void
   ): ThroughStream {
-    const ffmpegProcess = this.ffmpeg(args.build(fileDst), {
+    const stream = through();
+    const argsBuild = args.build(fileDst);
+    const ffmpegProcess = this.ffmpeg(argsBuild, {
       env: process.env,
     });
-    const stream = through();
 
+    stream.emit("args", argsBuild);
     ffmpegProcess.on("error", stream.emit.bind(stream, "error"));
     ffmpegProcess.stdout?.on("data", stream.emit.bind(stream, "data"));
     ffmpegProcess.stderr?.on("data", stream.emit.bind(stream, "data"));

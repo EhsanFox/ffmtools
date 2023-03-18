@@ -22,8 +22,8 @@ export default class ffmpegArgs {
   }
 
   addMetadata(data: Record<string, unknown>) {
-    Object.keys(data).forEach((k, i) =>
-      this.metadatas.push(`-metadata`, `${k}=${data[i]}`)
+    Object.keys(data).forEach((k) =>
+      this.metadatas.push(`-metadata`, `${k}=${data[k]}`)
     );
 
     return this;

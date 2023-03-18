@@ -11,14 +11,21 @@ export default (
 ) => {
   const ffmpeg = new ffmpegClient(ffmpegPath);
   const arg = new ffmpegArgs(source, 0);
-  const { attachments: _, ...allData } = data;
+  if(data.attachments)
+  {
+    const { attachments: _, ...allData } = data;
 
-  if (_)
-    if (Array.isArray(_))
-      _.map((x) => arg.addInput(x, arg.inputs.length / 2, `-codec:v`, "copy"));
-    else arg.addInput(_, arg.inputs.length / 2, `-codec:v`, "copy");
+    if (_)
+      if (Array.isArray(_))
+        _.map((x) => arg.addInput(x, arg.inputs.length / 2, `-codec:v`, "copy"));
+      else arg.addInput(_, arg.inputs.length / 2, `-codec:v`, "copy");
 
-  arg.addMetadata(allData);
+    arg.addMetadata(allData);
+  }
+  else
+  {
+    arg.addMetadata(data);
+  }
 
   return ffmpeg.execute(dest, arg, cb);
 };

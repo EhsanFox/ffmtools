@@ -1,6 +1,6 @@
 {
   "name": "ffmtools",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Some ffmpeg tips and tricks that might come in handy in one package",
   "main": "dist/src/index.js",
   "typings": "dist/index.d.ts",

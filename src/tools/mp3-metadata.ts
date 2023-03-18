@@ -10,7 +10,7 @@ export default (
   ffmpegPath: string = process.env["FFMPEG_PATH"] || "ffmpeg"
 ) => {
   const ffmpeg = new ffmpegClient(ffmpegPath);
-  const arg = new ffmpegArgs(source, 0).addMetadata(data);
+  const arg = new ffmpegArgs(source, 0);
   const { attachments: _, ...allData } = data;
 
   if (_)
